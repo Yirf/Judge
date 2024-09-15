@@ -1,10 +1,10 @@
 board:
-  - " &a%player%'s profile"
+  - "&a%player%'s profile"
   - "&8ᴠɪᴇᴡᴇʀ: &7%viewer%"
   - ""
   - "&fKills: %statistics_player_kills%"
-  - "&fDeaths: %statistics_player_kills%"
-  - "&fRank: %prefix%"
+  - "&fDeaths: %statistics_deaths%"
+  - "&fRank: %luckperms_prefix%"
   - ""
   - " &7[unsneak to hide]"
 translation: # Make sure to edit or your text my look wonky!!

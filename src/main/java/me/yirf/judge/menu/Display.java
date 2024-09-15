@@ -1,29 +1,16 @@
 package me.yirf.judge.menu;
 
-import com.google.common.base.Strings;
-import me.clip.placeholderapi.PlaceholderAPI;
 import me.yirf.judge.Judge;
-import me.yirf.judge.config.Config;
 import me.yirf.judge.group.Group;
 import me.yirf.judge.interfaces.Color;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.util.Transformation;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import static net.kyori.adventure.text.Component.text;
 import static org.bukkit.entity.Display.Billboard;
 
 public class Display implements Color {
@@ -39,21 +26,6 @@ public class Display implements Color {
         }
 
         display.text(getShow(player, target));
-        Bukkit.broadcast(getShow(player, target));
-
-//        display.text(
-//                text(target.getName() + " profile")
-//                        .appendNewline()
-//                        .append(text(""))
-//                        .appendNewline()
-//                        .append(text("Kills: 0"))
-//                        .appendNewline()
-//                        .append(text("Deaths: 0"))
-//                        .appendNewline()
-//                        .append(text("Playtime: 5 minutes"))
-//                        .appendNewline()
-//                        .append(text(""))
-//        );
 
         target.addPassenger(display);
         display.setTransformation(

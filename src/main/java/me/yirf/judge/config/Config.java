@@ -3,8 +3,6 @@ package me.yirf.judge.config;
 import me.yirf.judge.Judge;
 import me.yirf.judge.interfaces.Color;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -12,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Config implements Color {
 

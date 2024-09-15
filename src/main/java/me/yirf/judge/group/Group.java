@@ -7,9 +7,7 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.UUID;
 
-import static net.kyori.adventure.text.Component.text;
-
-public abstract class Group {
+public class Group {
 
     public static HashMap<UUID, UUID> group = new HashMap<>();
 

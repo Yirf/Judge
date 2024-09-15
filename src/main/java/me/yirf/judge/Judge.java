@@ -68,7 +68,7 @@ public final class Judge extends JavaPlugin {
     }
 
     public void sched() {
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, this::checkFalse, 0L, 20L);
+        Bukkit.getScheduler().runTaskTimer(this, this::checkFalse, 0L, 20L);
     }
 
     public void checkFalse() {

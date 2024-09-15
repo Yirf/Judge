@@ -10,15 +10,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.util.RayTraceResult;
-
-import java.util.HashMap;
-import java.util.UUID;
-
-// decided to not use sneak event (this is debug version so dont use unless u change.)
+import static me.yirf.judge.group.Group.group;
 
 public class OnSneak implements Listener {
-
-    HashMap<UUID, UUID> group = Group.group;
 
     @EventHandler
     public void onShift(PlayerToggleSneakEvent event) {
