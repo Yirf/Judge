@@ -1,9 +1,8 @@
 package me.yirf.judge;
 
 import me.yirf.judge.config.Config;
-import me.yirf.judge.events.onDisconnect;
-import me.yirf.judge.events.onInteract;
-import me.yirf.judge.events.onSneak;
+import me.yirf.judge.events.OnDisconnect;
+import me.yirf.judge.events.OnSneak;
 import me.yirf.judge.group.Group;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -64,8 +63,8 @@ public final class Judge extends JavaPlugin {
     }
 
     private void init() {
-        pm.registerEvents(new onSneak(), this);
-        pm.registerEvents(new onDisconnect(), this);
+        pm.registerEvents(new OnSneak(), this);
+        pm.registerEvents(new OnDisconnect(), this);
     }
 
     public void sched() {
