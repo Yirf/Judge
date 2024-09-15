@@ -3,6 +3,12 @@
 
 ![image](https://github.com/user-attachments/assets/38cc6293-fc47-46f6-b3ad-c7764adc81e0)
 
+<h3 align="center">Live preview:</h3>
+
+
+https://github.com/user-attachments/assets/dcb1f8cd-20a9-4de5-9df5-3e552ae174c9
+
+
 <h3 align="center">Config preview:</h3>
 
 ![image](https://github.com/user-attachments/assets/86add9b4-912b-4055-a084-11fae46f7504)
