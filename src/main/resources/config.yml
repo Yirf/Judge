@@ -1,0 +1,12 @@
+board:
+  - " &a%player%'s profile"
+  - "&8ᴠɪᴇᴡᴇʀ: &7%viewer%"
+  - ""
+  - "&fKills: %statistics_player_kills%"
+  - "&fDeaths: %statistics_player_kills%"
+  - "&fRank: %prefix%"
+  - ""
+  - " &7[unsneak to hide]"
+translation: # Make sure to edit or your text my look wonky!!
+  horizontal: 2.5 # increase the number to go more right, reduce to go left
+  vertical: -1.5 # increase the number to go up, reduce to go down
