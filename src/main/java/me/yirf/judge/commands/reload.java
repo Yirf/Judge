@@ -9,13 +9,13 @@ import org.bukkit.command.CommandSender;
 public class reload implements CommandExecutor {
 
     Config config = new Config();
-    Color translate = new Color(){};
+    //Color translate = new Color(){};
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
         if(!sender.hasPermission("judge.reload")) {return false;}
         config.reload();
-        sender.sendMessage(translate.format("&aReloaded config.yml"));
+        sender.sendMessage(Color.format("&aReloaded config.yml"));
         return true;
     }
 }
