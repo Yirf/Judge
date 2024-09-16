@@ -1,10 +1,12 @@
 package me.yirf.judge.menu;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.yirf.judge.Judge;
 import me.yirf.judge.group.Group;
 import me.yirf.judge.interfaces.Color;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.util.Transformation;
@@ -32,7 +34,7 @@ public class Display implements Color {
                 new Transformation(
                         new Vector3f(Judge.menuHoroz, Judge.menuVert, 0),
                         new AxisAngle4f(),
-                        new Vector3f(1),
+                        new Vector3f(Judge.menuScale),
                         new AxisAngle4f()
                 )
         );
@@ -45,7 +47,9 @@ public class Display implements Color {
         TextComponent.Builder text = Component.text();
 
         for (String line : Judge.menuTexts) {
-            //line = PlaceholderAPI.setPlaceholders(player, line);
+            if (Judge.hasPapi) {
+                line = PlaceholderAPI.setPlaceholders(target, line);
+            }
             line = translate.format(line).replaceAll("%player%", target.getName()).replaceAll("%viewer%", player.getName());
 
             TextComponent textComponent = Component.text(line);

@@ -1,5 +1,6 @@
 package me.yirf.judge;
 
+import me.yirf.judge.commands.reload;
 import me.yirf.judge.config.Config;
 import me.yirf.judge.events.OnDisconnect;
 import me.yirf.judge.events.OnSneak;
@@ -28,6 +29,9 @@ public final class Judge extends JavaPlugin {
     public static float menuVert;
     public static float menuHoroz;
     public static List<String> menuTexts;
+    public static float menuScale;
+    public static boolean hasPapi;
+    public static List<World> allowedWorlds;
 
     @Override
     public void onEnable() {
@@ -36,7 +40,6 @@ public final class Judge extends JavaPlugin {
         init();
         sched();
         data();
-
     }
 
     @Override
@@ -48,7 +51,7 @@ public final class Judge extends JavaPlugin {
         }
     }
 
-    private void data() {
+    public void data() {
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
         }
@@ -59,12 +62,20 @@ public final class Judge extends JavaPlugin {
 
         menuVert = Config.getFloat("translation.vertical");
         menuHoroz = Config.getFloat("translation.horizontal");
+        menuScale = Config.getFloat("translation.scale");
         menuTexts = Config.getStringList("board");
+        hasPapi = Bukkit.getPluginManager().isPluginEnabled("PlaceHolderAPI");
+
+        if(!Config.getBoolean("allow-all-worlds")) {
+            allowedWorlds = Config.getWorldList("allowed-worlds");
+        }
     }
 
     private void init() {
         pm.registerEvents(new OnSneak(), this);
         pm.registerEvents(new OnDisconnect(), this);
+        this.getCommand("reloadjudge").setExecutor(new reload());
+
     }
 
     public void sched() {

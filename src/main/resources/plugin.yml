@@ -1,0 +1,17 @@
+name: judge
+version: '0.1'
+main: me.yirf.judge.Judge
+api-version: '1.20'
+authors: [ Yirf, Xtevv ]
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+    WorldGuard:
+      load: BEFORE
+      required: false
+
+commands:
+  reloadjudge:
+    description: reloads config

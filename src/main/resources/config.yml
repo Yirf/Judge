@@ -7,6 +7,12 @@ board:
   - "&fRank: %luckperms_prefix%"
   - ""
   - " &7[unsneak to hide]"
+
 translation: # Make sure to edit or your text my look wonky!!
   horizontal: 2.5 # increase the number to go more right, reduce to go left
   vertical: -1.5 # increase the number to go up, reduce to go down
+  scale: 1
+
+allow-all-worlds: false
+allowed-worlds:
+  - "world"
