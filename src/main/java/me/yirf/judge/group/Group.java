@@ -10,6 +10,7 @@ import java.util.UUID;
 public class Group {
 
     public static HashMap<UUID, UUID> group = new HashMap<>();
+    public static HashMap<UUID, Boolean> control = new HashMap<>();
 
     public static void add(Entity entity, Player p) {
         UUID eu = entity.getUniqueId();

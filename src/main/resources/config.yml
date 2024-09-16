@@ -2,17 +2,20 @@ board:
   - "&a%player%'s profile"
   - "&8ᴠɪᴇᴡᴇʀ: &7%viewer%"
   - ""
-  - "&fKills: %statistics_player_kills%"
-  - "&fDeaths: %statistics_deaths%"
+  - "&fKills: &c%statistic_player_kills%"
+  - "&fDeaths: &6%statistic_deaths%"
   - "&fRank: %luckperms_prefix%"
   - ""
-  - " &7[unsneak to hide]"
+  - "&7[unsneak to hide]"
 
-translation: # Make sure to edit or your text my look wonky!!
-  horizontal: 2.5 # increase the number to go more right, reduce to go left
+properties: # Make sure to edit or your text my look wonky!!
+  horizontal: 2 # increase the number to go more right, reduce to go left
   vertical: -1.5 # increase the number to go up, reduce to go down
   scale: 1
+  color: 10,0,0 #COLOR USES RGB (0,0,0) | DEFAULT = default display background
 
-allow-all-worlds: false
+delay: 0 #How long the delay should be after shifting | USE 0 FOR NO DELAY (REQUIRES RESTART)
+
+allow-all-worlds: true
 allowed-worlds:
   - "world"

@@ -9,7 +9,6 @@ import org.bukkit.command.CommandSender;
 public class ReloadCommand implements CommandExecutor {
 
     Config config = new Config();
-    //Color translate = new Color(){};
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {

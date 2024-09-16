@@ -38,4 +38,5 @@ public interface Color {
         }
         return new String(b);
     }
+
 }

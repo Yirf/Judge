@@ -2,11 +2,11 @@ package me.yirf.judge.menu;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.yirf.judge.Judge;
+import me.yirf.judge.config.Config;
 import me.yirf.judge.group.Group;
 import me.yirf.judge.interfaces.Color;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.util.Transformation;
@@ -21,6 +21,11 @@ public class Display implements Color {
         display.setShadowed(true);
         display.setBillboard(Billboard.CENTER);
         display.setVisibleByDefault(false);
+        if(!Config.getString("properties.color").equals("DEFAULT")) {
+            display.setBackgroundColor(Config.getRGB("properties.color"));
+        }
+
+
         if (display == null) {
             Judge.instance.getLogger().severe("Unable to spawn display entity");
         }

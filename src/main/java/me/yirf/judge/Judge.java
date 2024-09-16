@@ -4,6 +4,7 @@ import me.yirf.judge.commands.ReloadCommand;
 import me.yirf.judge.config.Config;
 import me.yirf.judge.events.OnDisconnect;
 import me.yirf.judge.events.OnSneak;
+import me.yirf.judge.events.OnSneakDelay;
 import me.yirf.judge.group.Group;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
 
 public final class Judge extends JavaPlugin {
 
@@ -60,9 +62,9 @@ public final class Judge extends JavaPlugin {
             saveResource("config.yml", false);
         }
 
-        menuVert = Config.getFloat("translation.vertical");
-        menuHoroz = Config.getFloat("translation.horizontal");
-        menuScale = Config.getFloat("translation.scale");
+        menuVert = Config.getFloat("properties.vertical");
+        menuHoroz = Config.getFloat("properties.horizontal");
+        menuScale = Config.getFloat("properties.scale");
         menuTexts = Config.getStringList("board");
         hasPapi = Bukkit.getPluginManager().isPluginEnabled("PlaceHolderAPI");
 
@@ -72,7 +74,11 @@ public final class Judge extends JavaPlugin {
     }
 
     private void init() {
-        pm.registerEvents(new OnSneak(), this);
+        if(Config.getInt("delay") == 0) {
+            pm.registerEvents(new OnSneak(), this);
+        } else {
+            pm.registerEvents(new OnSneakDelay(), this);
+        }
         pm.registerEvents(new OnDisconnect(), this);
         this.getCommand("reloadjudge").setExecutor(new ReloadCommand());
 
