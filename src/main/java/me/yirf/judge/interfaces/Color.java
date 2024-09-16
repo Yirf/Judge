@@ -8,7 +8,7 @@ public interface Color {
     Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f0-9]{6})");
     char COLOR_CHAR = '\u00A7';
 
-    default String format(String message) {
+    static String format(String message) {
         if (message == null || message.isEmpty()) {
             return "";
         }
@@ -17,7 +17,7 @@ public interface Color {
         return formatTraditionalColors(hexColored);
     }
 
-    default String formatHexColors(String message) {
+    static String formatHexColors(String message) {
         Matcher matcher = HEX_PATTERN.matcher(message);
         StringBuffer buffer = new StringBuffer(message.length() + 4 * 8);
         while (matcher.find()) {
@@ -28,7 +28,7 @@ public interface Color {
         return buffer.toString();
     }
 
-    default String formatTraditionalColors(String message) {
+    static String formatTraditionalColors(String message) {
         char[] b = message.toCharArray();
         for (int i = 0; i < b.length - 1; i++) {
             if (b[i] == '&' && "0123456789AaBbCcDdEeFfKkLlMmNnOoRrXx".indexOf(b[i + 1]) > -1) {

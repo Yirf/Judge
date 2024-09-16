@@ -14,9 +14,6 @@ import org.bukkit.util.RayTraceResult;
 import static me.yirf.judge.group.Group.group;
 
 public class OnSneak implements Listener {
-
-    Config config = new Config(){};
-
     @EventHandler
     public void onShift(PlayerToggleSneakEvent event) {
         Player p = event.getPlayer();
@@ -32,9 +29,9 @@ public class OnSneak implements Listener {
             }
         }
 
-        if (p.rayTraceEntities(10) == null){return;}
         RayTraceResult result = p.rayTraceEntities(10);
-        if (!(result.getHitEntity() instanceof Player)) {return;}
+        if (result == null) return;
+        if (!(result.getHitEntity() instanceof Player)) return;
 
         Entity entity = result.getHitEntity();
 

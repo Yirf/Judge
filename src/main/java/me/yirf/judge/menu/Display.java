@@ -16,8 +16,6 @@ import org.joml.Vector3f;
 import static org.bukkit.entity.Display.Billboard;
 
 public class Display implements Color {
-    private static final Color translate = new Color(){};
-
     public static void spawnMenu(Player player, Player target) {
         TextDisplay display = target.getWorld().spawn(target.getLocation(), TextDisplay.class);
         display.setShadowed(true);
@@ -50,7 +48,7 @@ public class Display implements Color {
             if (Judge.hasPapi) {
                 line = PlaceholderAPI.setPlaceholders(target, line);
             }
-            line = translate.format(line).replaceAll("%player%", target.getName()).replaceAll("%viewer%", player.getName());
+            line = Color.format(line).replaceAll("%player%", target.getName()).replaceAll("%viewer%", player.getName());
 
             TextComponent textComponent = Component.text(line);
 

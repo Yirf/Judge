@@ -18,7 +18,6 @@ public class Config implements Color {
     private static Judge judge = Judge.instance;
     private static FileConfiguration config = judge.getConfigYaml();
     private File configFile = judge.getConfigFile();
-    private Color translate = new Color(){};
 
 
     public static String getString(String path) {
