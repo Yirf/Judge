@@ -1,7 +1,7 @@
 <p align="center">PlacehodlerAPI supported!</p>
 <h3 align="center">Ingame preview:</h3>
 
-![image](https://github.com/user-attachments/assets/38cc6293-fc47-46f6-b3ad-c7764adc81e0)
+![image](https://github.com/user-attachments/assets/c03ed0b3-46d0-4a5f-a811-37a62c52dc4b)
 
 <h3 align="center">Live preview:</h3>
 
