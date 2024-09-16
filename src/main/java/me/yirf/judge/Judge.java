@@ -1,6 +1,6 @@
 package me.yirf.judge;
 
-import me.yirf.judge.commands.reload;
+import me.yirf.judge.commands.ReloadCommand;
 import me.yirf.judge.config.Config;
 import me.yirf.judge.events.OnDisconnect;
 import me.yirf.judge.events.OnSneak;
@@ -74,7 +74,7 @@ public final class Judge extends JavaPlugin {
     private void init() {
         pm.registerEvents(new OnSneak(), this);
         pm.registerEvents(new OnDisconnect(), this);
-        this.getCommand("reloadjudge").setExecutor(new reload());
+        this.getCommand("reloadjudge").setExecutor(new ReloadCommand());
 
     }
 
