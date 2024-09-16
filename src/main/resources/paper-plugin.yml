@@ -1,5 +1,0 @@
-name: judge
-version: '0.1'
-main: me.yirf.judge.Judge
-api-version: '1.20'
-authors: [ Yirf, Xtevv ]
