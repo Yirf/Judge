@@ -19,6 +19,8 @@ public class OnSneakDelay implements Listener {
     public void onShift(PlayerToggleSneakEvent event) {
         Player p = event.getPlayer();
 
+        if(control.get(p.getUniqueId()) != null) {;return;}
+
         if (group.get(p.getUniqueId()) != null) {
             Group.remove(p);
             control.remove(p.getUniqueId());
@@ -31,20 +33,17 @@ public class OnSneakDelay implements Listener {
             }
         }
 
-        RayTraceResult result = p.rayTraceEntities(10);
-        if (result == null || !(result.getHitEntity() instanceof Player)) {return;}
-        Entity entity = result.getHitEntity();
-
         assert event.isSneaking();
 
-        if(Bukkit.getServer().getOnlinePlayers().contains((Player) entity)) {
-            if(control.get(p.getUniqueId()) != null) {;return;}
-            Bukkit.getScheduler().runTaskLater(Judge.instance, () -> {
-                control.put(p.getUniqueId(), true);
-                assert event.isSneaking();
-                Display.spawnMenu(p, (Player) entity);
-            }, 20L * Config.getInt("delay"));
-        }
+        Bukkit.getScheduler().runTaskLater(Judge.instance, () -> { //super fat fucking sched!!!
+            control.put(p.getUniqueId(), true);
+            RayTraceResult result = p.rayTraceEntities(10);
+            if (result == null || !(result.getHitEntity() instanceof Player)) {return;}
+            Entity entity = result.getHitEntity();
+            if(!Bukkit.getServer().getOnlinePlayers().contains((Player) entity)) {return;}
+            assert event.isSneaking();
+            Display.spawnMenu(p, (Player) entity);
+        }, 20L * Config.getInt("delay"));
 
     }
 
