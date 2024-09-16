@@ -11,4 +11,5 @@ https://github.com/user-attachments/assets/dcb1f8cd-20a9-4de5-9df5-3e552ae174c9
 
 <h3 align="center">Config preview:</h3>
 
-![image](https://github.com/user-attachments/assets/38a0f32c-a704-471d-8efa-5f3d4dfb76cb)
+![image](https://github.com/user-attachments/assets/263a5925-ffc6-46bb-9047-6c0a3eee960e)
+
