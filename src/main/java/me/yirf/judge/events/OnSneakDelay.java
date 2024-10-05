@@ -33,7 +33,7 @@ public class OnSneakDelay implements Listener {
             }
         }
 
-        assert event.isSneaking();
+        if (!event.isSneaking()) {return;}
 
         Bukkit.getScheduler().runTaskLater(Judge.instance, () -> { //super fat fucking sched!!!
             control.put(p.getUniqueId(), true);
@@ -41,7 +41,7 @@ public class OnSneakDelay implements Listener {
             if (result == null || !(result.getHitEntity() instanceof Player)) {return;}
             Entity entity = result.getHitEntity();
             if(!Bukkit.getServer().getOnlinePlayers().contains((Player) entity)) {return;}
-            assert event.isSneaking();
+            if (!event.isSneaking()) {return;}
             Display.spawnMenu(p, (Player) entity);
         }, 20L * Config.getInt("delay"));
 

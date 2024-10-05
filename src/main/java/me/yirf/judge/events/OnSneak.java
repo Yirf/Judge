@@ -33,7 +33,7 @@ public class OnSneak implements Listener {
         if (result == null || !(result.getHitEntity() instanceof Player)) {return;}
         Entity entity = result.getHitEntity();
 
-        assert event.isSneaking();
+        if (!event.isSneaking()) {return;}
 
         if(Bukkit.getServer().getOnlinePlayers().contains(p)) {
             Display.spawnMenu(p, (Player) entity);
