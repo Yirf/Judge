@@ -11,6 +11,9 @@ dependencies:
     WorldGuard:
       load: BEFORE
       required: false
+    ViaVersion:
+      load: BEFORE
+      required: false
 
 commands:
   reloadjudge:
