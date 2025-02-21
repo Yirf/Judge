@@ -31,4 +31,4 @@ allowed-worlds:          # List of worlds where boards are visible
 
 specific-regions: false  # Enable/Disable region-specific visibility
 allowed-regions:         # List of WorldGuard regions where boards are visible
-  - "judge-region"
+  - "judge-region"       # Requires WorldGuard Plugin.
