@@ -1,5 +1,6 @@
-# // BOARD SETTINGS \\
-# ===================
+# =======================
+#      BOARD SETTINGS
+# =======================
 board:
   - "&a%player%'s profile"
   - "&8ᴠɪᴇᴡᴇʀ: &7%viewer%"
@@ -9,32 +10,25 @@ board:
   - "&fRank: %luckperms_prefix%"
   - ""
   - "&7[unsneak to hide]"
-properties: # Make sure to edit or your text my look wonky!!
-  horizontal: 2 # increase the number to go more right, reduce to go left
-  vertical: -1.5 # increase the number to go up, reduce to go down
+
+properties: 
+  horizontal: 2          # Increase to move right, decrease to move left
+  vertical: -1.5         # Increase to move up, decrease to move down
   scale: 1
-  color: 10,0,0 #COLOR USES RGB (0,0,0) | DEFAULT = default display background
-# ===================
-# \\ BOARD SETTINGS //
+  color: 10,0,0          # RGB color for display background (for the default transparent background, set this to DEFAULT)
 
-# -----------------------
+# =======================
+#     EVENT SETTINGS
+# =======================
+delay: 0                 # Delay after shifting (in ticks)
 
-# // EVENT SETTINGS \\
-# ===================
-delay: 0 #How long the delay should be after shifting (ticks)
-# ===================
-# \\ EVENT SETTINGS //
-
-# -----------------------
-
-# // VISIBILITY SETTINGS \\
-# ===================
-allow-all-worlds: true # - Enables/Disables boards in all worlds
-allowed-worlds: # - Adds board visibility to specific worlds.
+# =======================
+#   VISIBILITY SETTINGS
+# =======================
+allow-all-worlds: true   # Enable/Disable boards in all worlds
+allowed-worlds:          # List of worlds where boards are visible
   - "judge-world"
-#* requires worldguard plugin.
-specific-regions: false # - Enables/Disables region specific visibility
-allowed-regions: # - Adds board visibility to specific wg regions.
+
+specific-regions: false  # Enable/Disable region-specific visibility
+allowed-regions:         # List of WorldGuard regions where boards are visible
   - "judge-region"
-# ===================
-# \\ VISIBILITY SETTINGS //
