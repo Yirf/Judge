@@ -18,27 +18,23 @@ import static me.yirf.judge.group.Group.group;
 public void onShift(PlayerToggleSneakEvent event) {
     Player p = event.getPlayer();
 
-    // If the player is already in a group, remove them
     if (group.get(p.getUniqueId()) != null) {
         Group.remove(p);
         return;
     }
 
-    // World restriction check
     if (!Config.getBoolean("allow-all-worlds")) {
         if (!Judge.allowedWorlds.contains(p.getWorld())) {
             return;
         }
     }
 
-    // WorldGuard region check
     if (Judge.hasWorldGuard && Config.getBoolean("specific-regions")) {
         if (!RegionUtil.containsRegion(p, Config.getStringList("allowed-regions"))) {
             return;
         }
     }
 
-    // Ray trace for nearby player
     RayTraceResult result = p.rayTraceEntities(10);
     if (result == null || !(result.getHitEntity() instanceof Player)) {
         return;
@@ -46,17 +42,14 @@ public void onShift(PlayerToggleSneakEvent event) {
 
     Player target = (Player) result.getHitEntity();
 
-    // Check if target is an NPC
     if (target.hasMetadata("NPC")) {
         return;
     }
 
-    // ✅ Check if the target player is vanished
     if (target.hasMetadata("vanished")) {
         return;
     }
 
-    // Only show menu if the player is sneaking and online
     if (!event.isSneaking()) {
         return;
     }
