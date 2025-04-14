@@ -14,39 +14,55 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.util.RayTraceResult;
 import static me.yirf.judge.group.Group.group;
 
-public class OnSneak implements Listener {
-    @EventHandler
-    public void onShift(PlayerToggleSneakEvent event) {
-        Player p = event.getPlayer();
+@EventHandler
+public void onShift(PlayerToggleSneakEvent event) {
+    Player p = event.getPlayer();
 
-        if (group.get(p.getUniqueId()) != null) {
-            Group.remove(p);
-            return;
-        }
-
-        if(!Config.getBoolean("allow-all-worlds")) {
-            if (!Judge.allowedWorlds.contains(p.getWorld())) {
-                return;
-            }
-        }
-        if (Judge.hasWorldGuard && Config.getBoolean("specific-regions")) {
-            if (!RegionUtil.containsRegion
-                    (p, Config.getStringList("allowed-regions")
-                    )) return;
-        }
-
-        RayTraceResult result = p.rayTraceEntities(10);if (result == null || !(result.getHitEntity() instanceof Player)) {return;}
-        Entity entity = result.getHitEntity();
-
-        if (entity.hasMetadata("NPC")) {
-            return;
-        }
-
-        if (!event.isSneaking()) {return;}
-        if(Bukkit.getServer().getOnlinePlayers().contains(p)) {
-            Display.spawnMenu(p, (Player) entity);
-        }
-
+    // If the player is already in a group, remove them
+    if (group.get(p.getUniqueId()) != null) {
+        Group.remove(p);
+        return;
     }
 
+    // World restriction check
+    if (!Config.getBoolean("allow-all-worlds")) {
+        if (!Judge.allowedWorlds.contains(p.getWorld())) {
+            return;
+        }
+    }
+
+    // WorldGuard region check
+    if (Judge.hasWorldGuard && Config.getBoolean("specific-regions")) {
+        if (!RegionUtil.containsRegion(p, Config.getStringList("allowed-regions"))) {
+            return;
+        }
+    }
+
+    // Ray trace for nearby player
+    RayTraceResult result = p.rayTraceEntities(10);
+    if (result == null || !(result.getHitEntity() instanceof Player)) {
+        return;
+    }
+
+    Player target = (Player) result.getHitEntity();
+
+    // Check if target is an NPC
+    if (target.hasMetadata("NPC")) {
+        return;
+    }
+
+    // ✅ Check if the target player is vanished
+    if (target.hasMetadata("vanished")) {
+        return;
+    }
+
+    // Only show menu if the player is sneaking and online
+    if (!event.isSneaking()) {
+        return;
+    }
+
+    if (Bukkit.getServer().getOnlinePlayers().contains(p)) {
+        Display.spawnMenu(p, target);
+    }
 }
+
