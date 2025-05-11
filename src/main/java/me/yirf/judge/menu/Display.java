@@ -5,33 +5,41 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.yirf.judge.Judge;
 import me.yirf.judge.config.Config;
 import me.yirf.judge.group.Group;
-import me.yirf.judge.interfaces.Color;
+import me.yirf.judge.interfaces.Colored;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
 import org.bukkit.util.Transformation;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
+//
+
+import java.util.List;
 
 import static org.bukkit.entity.Display.Billboard;
 
-public class Display implements Color {
+public class Display implements Colored {
     public static void spawnMenu(Player player, Player target) {
-        if(Bukkit.getServer().getPluginManager().isPluginEnabled("ViaVersion")) {
+        if (Config.getBoolean("allow-via") && Bukkit.getServer().getPluginManager().isPluginEnabled("ViaVersion")) {
             if(Via.getAPI().getPlayerVersion(player.getUniqueId()) < 762) {
                 Bukkit.broadcastMessage("Less then version!");
                 return;
             }
         }
         TextDisplay display = target.getWorld().spawn(target.getLocation(), TextDisplay.class);
-        display.setShadowed(true);
+        display.setShadowed(Config.getBoolean("properties.shadow"));
         display.setBillboard(Billboard.CENTER);
         display.setVisibleByDefault(true);
+        display.setSeeThrough(Config.getBoolean(("properties.see-through")));
         if(!Config.getString("properties.color").equals("DEFAULT")) {
-            display.setBackgroundColor(Config.getRGB("properties.color"));
+            List<Integer> colors = Config.getVectorAsList("properties.color");
+            float opacity = Config.getFloat("properties.opacity") * 255;
+            Color argb = Color.fromARGB((int) opacity, colors.get(0), colors.get(1), colors.get(1));
+            display.setBackgroundColor(argb);
         }
 
 
@@ -65,7 +73,7 @@ public class Display implements Color {
             }
 
             // Convert color codes before creating the component
-            line = Color.format(line)
+            line = Colored.format(line)
                     .replaceAll("%player%", target.getName())
                     .replaceAll("%viewer%", player.getName());
 

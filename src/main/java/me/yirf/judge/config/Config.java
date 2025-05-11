@@ -1,7 +1,7 @@
 package me.yirf.judge.config;
 
 import me.yirf.judge.Judge;
-import me.yirf.judge.interfaces.Color;
+import me.yirf.judge.interfaces.Colored;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Config implements Color {
+public class Config implements Colored {
 
     private static Judge judge = Judge.instance;
     private static FileConfiguration config = judge.getConfigYaml();
@@ -34,6 +34,7 @@ public class Config implements Color {
 
     public static boolean getBoolean(String path) {return config.getBoolean(path);}
 
+
     public static org.bukkit.Color getRGB(String path) {
         List<Integer> rgbList = Arrays.stream(config.getString(path).split(","))
                 .map(String::trim)
@@ -46,6 +47,15 @@ public class Config implements Color {
                 rgbList.get(1),
                 rgbList.get(2)
         );
+    }
+
+    public static List<Integer> getVectorAsList(String path) {
+        List<Integer> vector = Arrays.stream(config.getString(path).split(","))
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        return vector;
     }
 
     public static List<String> getStringList(String path) {

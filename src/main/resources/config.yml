@@ -1,5 +1,3 @@
-# // BOARD SETTINGS \\
-# ===================
 board:
   - "&a%player%'s profile"
   - "&8ᴠɪᴇᴡᴇʀ: &7%viewer%"
@@ -12,29 +10,20 @@ board:
 properties: # Make sure to edit or your text my look wonky!!
   horizontal: 2 # increase the number to go more right, reduce to go left
   vertical: -1.5 # increase the number to go up, reduce to go down
-  scale: 1
+  scale: 1 #scale of the judge board
   color: 10,0,0 #COLOR USES RGB (0,0,0) | DEFAULT = default display background
-# ===================
-# \\ BOARD SETTINGS //
+  see-through: true #can the display be seen through blocks?
+  opacity: 1.00 # 1 = no transparency, 0 = full transparency (0.00-1.00)
 
-# -----------------------
-
-# // EVENT SETTINGS \\
-# ===================
 delay: 0 #How long the delay should be after shifting (ticks)
-# ===================
-# \\ EVENT SETTINGS //
 
-# -----------------------
-
-# // VISIBILITY SETTINGS \\
-# ===================
 allow-all-worlds: true # - Enables/Disables boards in all worlds
 allowed-worlds: # - Adds board visibility to specific worlds.
   - "judge-world"
+  -
 #* requires worldguard plugin.
 specific-regions: false # - Enables/Disables region specific visibility
 allowed-regions: # - Adds board visibility to specific wg regions.
   - "judge-region"
-# ===================
-# \\ VISIBILITY SETTINGS //
+
+allow-via: false # - Enables/Disables via version formating for older versions.
